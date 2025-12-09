@@ -1,0 +1,18 @@
+
+version: "3.9"
+
+services:
+  anythingllm:
+    image: mintplexlabs/anythingllm:latest
+    container_name: anythingllm
+    env_file:
+      - .env
+    ports:
+      # Expose locally only; we'll bind to loopback with Podman later
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - ./storage:/app/server/storage
+    restart: unless-stopped
+    # Required if you want web page scraping tools (Puppeteer/Chromium) to work
+    cap_add:
+      - SYS_ADMIN
