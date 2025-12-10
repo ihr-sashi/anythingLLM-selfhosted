@@ -11,7 +11,7 @@ services:
       # Expose locally only; we'll bind to loopback with Podman later
       - "127.0.0.1:3001:3001"
     volumes:
-      - /root/apps/anythingllm/storage:/app/server/storage
+      - ./storage:/app/server/storage
     restart: unless-stopped
     # Required if you want web page scraping tools (Puppeteer/Chromium) to work
     cap_add:
